@@ -31,7 +31,7 @@ public class CsvReader{
                 String[] RowData = line.split(",");
 
                 //CSVを順にセット
-                data.setId(RowData[0]);    //ID
+                data.setId(RowData[0], context);    //ID
                 data.setRare(RowData[1]);  //レア度
                 data.setBrand(RowData[2]); //ブランド
                 data.setKind(RowData[3]);  //服の種類

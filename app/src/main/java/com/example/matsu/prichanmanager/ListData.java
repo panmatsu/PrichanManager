@@ -1,5 +1,8 @@
 package com.example.matsu.prichanmanager;
 
+import android.content.Context;
+import android.util.Log;
+
 public class ListData {
 
     String id;    //カードID
@@ -9,11 +12,20 @@ public class ListData {
     String name;  //名前
     String iine;  //いいね値
 
+    int resNumber = 0; //画像のResource番号
+
 
 
     //IDの設定
-    public void setId(String id){
+    public void setId(String id, Context context){
         this.id = id;
+
+
+        //IDからResource管理番号の設定を行う
+
+        Log.d("ID::",id.toLowerCase().replace("-","_"));
+        this.resNumber = context.getResources().getIdentifier(id.toLowerCase().replace("-","_"), "drawable", context.getPackageName());
+        Log.d("Drawable:",String.valueOf(resNumber));
     }
     //レア度の設定
     public void setRare(String rare) {
@@ -61,5 +73,9 @@ public class ListData {
     //いいね値の取得
     public String getIine() {
         return iine;
+    }
+    //Resource管理番号の取得
+    public int getResNumber(){
+        return resNumber;
     }
 }
