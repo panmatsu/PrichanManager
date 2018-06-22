@@ -12,19 +12,20 @@ public class ListData {
     String name;  //名前
     String iine;  //いいね値
 
-    int resNumber = 0; //画像のResource番号
+    int resNumber; //画像のResource番号
+
+    boolean isHold = false; //所持・未所持
 
 
 
     //IDの設定
     public void setId(String id, Context context){
+        //IDの設定
         this.id = id;
-
-
         //IDからResource管理番号の設定を行う
 
-        Log.d("ID::",id.toLowerCase().replace("-","_"));
-        this.resNumber = context.getResources().getIdentifier(id.toLowerCase().replace("-","_"), "drawable", context.getPackageName());
+        Log.d("ID::", id.toLowerCase().replace("-","_"));
+        this.resNumber = context.getResources().getIdentifier(id.toLowerCase().replace("-", "_"), "drawable", context.getPackageName());
         Log.d("Drawable:",String.valueOf(resNumber));
     }
     //レア度の設定
@@ -46,6 +47,14 @@ public class ListData {
     //いいね値の設定
     public void setIine(String iine) {
         this.iine = iine;
+    }
+    //所持パラメータの設定
+    public void setIsHold(){
+        if(isHold == true){
+            this.isHold = false;
+        }else{
+            this.isHold = true;
+        }
     }
 
 
@@ -77,5 +86,9 @@ public class ListData {
     //Resource管理番号の取得
     public int getResNumber(){
         return resNumber;
+    }
+    //所持パラメータの取得
+    public boolean isHold() {
+        return isHold;
     }
 }
