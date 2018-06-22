@@ -16,11 +16,11 @@ public class CsvReader{
 
     List<ListData> objects = new ArrayList<ListData>();
 
-    public  void reader(Context context){
+    public  void reader(Context context, String csvFile){
         AssetManager assetManager = context.getResources().getAssets();
         try{
             //CSVファイルの読み込み
-            InputStream inputStream = assetManager.open("PCH1.csv");
+            InputStream inputStream = assetManager.open(csvFile);
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;

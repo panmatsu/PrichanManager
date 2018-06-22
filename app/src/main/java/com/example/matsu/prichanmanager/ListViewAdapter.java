@@ -1,10 +1,7 @@
 package com.example.matsu.prichanmanager;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -46,6 +42,7 @@ public class ListViewAdapter extends ArrayAdapter<ListData>{
         TextView kindText;
         TextView nameText;
         TextView iineText;
+        TextView holdText;
         ImageView imageView;
 
         //各Viewとの関連付け
@@ -55,6 +52,7 @@ public class ListViewAdapter extends ArrayAdapter<ListData>{
         kindText = (TextView)convertView.findViewById(R.id.kind);
         nameText = (TextView)convertView.findViewById(R.id.name);
         iineText = (TextView)convertView.findViewById(R.id.iine);
+        holdText = (TextView)convertView.findViewById(R.id.hold);
         imageView = (ImageView)convertView.findViewById(R.id.image);
 
         //TextViewにデータのセット
@@ -64,6 +62,11 @@ public class ListViewAdapter extends ArrayAdapter<ListData>{
         kindText.setText(data.getKind());
         nameText.setText(data.getName());
         iineText.setText(data.getIine());
+        if(data.isHold() == true){
+            holdText.setText("所持");
+        }else{
+            holdText.setText("未所持");
+        }
 
 
         iineText.setText(String.valueOf(data.resNumber));
