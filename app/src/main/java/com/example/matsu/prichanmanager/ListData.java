@@ -24,7 +24,7 @@ public class ListData {
         this.id = id;
         //IDからResource管理番号の設定を行う
 
-        Log.d("ID::", id.toLowerCase().replace("-","_"));
+        //Log.d("ID::", id.toLowerCase().replace("-","_"));
         this.resNumber = context.getResources().getIdentifier(id.toLowerCase().replace("-", "_"), "drawable", context.getPackageName());
         Log.d("Drawable:",String.valueOf(resNumber));
     }

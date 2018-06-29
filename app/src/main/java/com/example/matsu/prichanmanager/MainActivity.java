@@ -2,9 +2,12 @@ package com.example.matsu.prichanmanager;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,22 +19,24 @@ public class MainActivity extends AppCompatActivity {
         //CSVの読み込み
         CsvReader parser = new CsvReader();
         parser.reader(getApplicationContext(), "PCH1.csv");
-        final ListViewAdapter listViewAdapter = new ListViewAdapter(this, 0, parser.objects);
-        ListView listView = (ListView)findViewById(R.id.list);
-        listView.setAdapter(listViewAdapter);
+
+        Log.d("DATASIZE",String.valueOf(parser.objects.size()));
+
+        List<ListData> data = parser.objects;
+        //RecyclerViewの反映
+        RecyclerView rv = (RecyclerView) findViewById(R.id.RecyclerView);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(data);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+
+        rv.setHasFixedSize(true);
+
+        //rv.setLayoutManager(llm);
+        rv.setLayoutManager(new GridLayoutManager(this, 3));
+
+        rv.setAdapter(adapter);
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-                ListView list = (ListView)adapterView;
-                ListData data = (ListData) list.getItemAtPosition(pos);
-                //所持データの更新
-                data.setIsHold();
-                //所持テキストの更新
-                listViewAdapter.notifyDataSetChanged();
-            }
-        });
 
     }
 }
