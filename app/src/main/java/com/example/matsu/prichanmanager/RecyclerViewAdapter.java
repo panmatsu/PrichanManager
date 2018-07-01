@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+    //表示リストデータ
     private List<ListData> list;
+    private View.OnClickListener listener;
 
     public RecyclerViewAdapter(List<ListData> list){
         this.list = list;
@@ -25,11 +27,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
         //Viewにテキスト反映
         holder.idText.setText(list.get(position).getId());
-        holder.rareText.setText(list.get(position).getRare());
-        holder.brandText.setText(list.get(position).getBrand());
-        holder.kindText.setText(list.get(position).getKind());
-        holder.nameText.setText(list.get(position).getName());
-        holder.iineText.setText(list.get(position).getIine());
         if(list.get(position).isHold() == true){
             holder.holdText.setText("所持");
         }else{
@@ -37,13 +34,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         }
         Log.d("Name", list.get(position).getName());
         //Viewに画像反映
-        holder.iineText.setText(String.valueOf(list.get(position).resNumber));
         //Resource番号から画像の貼り付け
         if(list.get(position).resNumber != 0) {
             holder.imageView.setImageResource(list.get(position).getResNumber());
         }else{
             holder.imageView.setImageResource(R.drawable.pch1_01);
         }
+
+        holder.linearLayout.setId(holder.getAdapterPosition());
+        holder.linearLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                listener.onClick(view);
+            }
+        });
+    }
+
+    public void setOnItemClickListener(View.OnClickListener listener){
+        this.listener = listener;
     }
 
     public int getItemCount(){

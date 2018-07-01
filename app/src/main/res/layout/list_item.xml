@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/linear_layout"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
         android:orientation="vertical">
@@ -20,39 +21,10 @@
             android:text="id" />
 
         <TextView
-            android:id="@+id/rare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KR" />
-
-        <TextView
-            android:id="@+id/brand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Brand" />
-
-        <TextView
-            android:id="@+id/kind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dress" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="キラッとワンピ" />
-
-        <TextView
-            android:id="@+id/iine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="800いいね" />
-
-        <TextView
             android:id="@+id/hold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:text="みしょじ" />
 
     </LinearLayout>

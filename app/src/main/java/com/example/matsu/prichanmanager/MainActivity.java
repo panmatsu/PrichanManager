@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //CSVの読み込み
-        CsvReader parser = new CsvReader();
+        final CsvReader parser = new CsvReader();
         parser.reader(getApplicationContext(), "PCH1.csv");
 
         Log.d("DATASIZE",String.valueOf(parser.objects.size()));
@@ -35,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(new GridLayoutManager(this, 3));
 
         rv.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, String.valueOf(parser.objects.get(view.getId())), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

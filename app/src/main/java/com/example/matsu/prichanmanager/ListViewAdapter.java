@@ -47,21 +47,11 @@ public class ListViewAdapter extends ArrayAdapter<ListData>{
 
         //各Viewとの関連付け
         idText = (TextView)convertView.findViewById(R.id.id);
-        rareText = (TextView)convertView.findViewById(R.id.rare);
-        brandText = (TextView)convertView.findViewById(R.id.brand);
-        kindText = (TextView)convertView.findViewById(R.id.kind);
-        nameText = (TextView)convertView.findViewById(R.id.name);
-        iineText = (TextView)convertView.findViewById(R.id.iine);
         holdText = (TextView)convertView.findViewById(R.id.hold);
         imageView = (ImageView)convertView.findViewById(R.id.image);
 
         //TextViewにデータのセット
         idText.setText(data.getId());
-        rareText.setText(data.getRare());
-        brandText.setText(data.getBrand());
-        kindText.setText(data.getKind());
-        nameText.setText(data.getName());
-        iineText.setText(data.getIine());
         if(data.isHold() == true){
             holdText.setText("所持");
         }else{
@@ -69,7 +59,6 @@ public class ListViewAdapter extends ArrayAdapter<ListData>{
         }
 
 
-        iineText.setText(String.valueOf(data.resNumber));
         //Resource番号から画像の貼り付け
         if(data.resNumber != 0) {
             imageView.setImageResource(data.getResNumber());
