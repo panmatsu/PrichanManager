@@ -1,7 +1,6 @@
 package com.example.matsu.prichanmanager;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +25,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public void onBindViewHolder(RecyclerViewHolder holder, final int position){
 
         //Viewにテキスト反映
-        holder.idText.setText(list.get(position).getId());
         if(list.get(position).isHold() == true){
             holder.holdText.setText("所持");
         }else{
             holder.holdText.setText("未所持");
         }
-        Log.d("Name", list.get(position).getName());
         //Viewに画像反映
         //Resource番号から画像の貼り付け
         if(list.get(position).resNumber != 0) {
@@ -41,10 +38,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             holder.imageView.setImageResource(R.drawable.pch1_01);
         }
 
+        //クリックイベント
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                list.get(position).setIsHold();
+                notifyDataSetChanged();
                 listener.onClick(view, list.get(position).getName());
+
             }
         });
     }

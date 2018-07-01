@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView idText;
     public TextView holdText;
     public ImageView imageView;
     public LinearLayout linearLayout;
@@ -18,7 +17,6 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         linearLayout = (LinearLayout)itemView.findViewById(R.id.linear_layout);
-        idText = (TextView) itemView.findViewById(R.id.id);
         holdText = (TextView) itemView.findViewById(R.id.hold);
         imageView = (ImageView) itemView.findViewById(R.id.image);
 
