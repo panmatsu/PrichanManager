@@ -11,7 +11,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     //表示リストデータ
     private List<ListData> list;
-    private View.OnClickListener listener;
+    private onItemClickListener listener;
 
     public RecyclerViewAdapter(List<ListData> list){
         this.list = list;
@@ -23,7 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return vh;
     }
 
-    public void onBindViewHolder(RecyclerViewHolder holder, int position){
+    public void onBindViewHolder(RecyclerViewHolder holder, final int position){
 
         //Viewにテキスト反映
         holder.idText.setText(list.get(position).getId());
@@ -41,20 +41,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             holder.imageView.setImageResource(R.drawable.pch1_01);
         }
 
-        holder.linearLayout.setId(holder.getAdapterPosition());
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                listener.onClick(view);
+                listener.onClick(view, list.get(position).getName());
             }
         });
     }
 
-    public void setOnItemClickListener(View.OnClickListener listener){
+    public void setOnItemClickListener(onItemClickListener listener){
         this.listener = listener;
     }
 
     public int getItemCount(){
         return list.size();
+    }
+
+    public interface onItemClickListener{
+        void onClick(View view, String name);
     }
 }

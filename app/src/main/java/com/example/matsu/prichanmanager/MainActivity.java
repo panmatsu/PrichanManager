@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         rv.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new View.OnClickListener() {
+        adapter.setOnItemClickListener(new RecyclerViewAdapter.onItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, String.valueOf(parser.objects.get(view.getId())), Toast.LENGTH_SHORT).show();
+            public void onClick(View view, String name) {
+                Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
             }
         });
 
