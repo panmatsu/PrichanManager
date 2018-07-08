@@ -40,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
 
         //クリックイベント
-        holder.linearLayout.setOnClickListener(new View.OnClickListener(){
+        holder.imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 //クリック処理

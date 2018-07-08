@@ -10,12 +10,10 @@ import android.widget.TextView;
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView imageView;
-    public LinearLayout linearLayout;
 
     public RecyclerViewHolder(View itemView){
         super(itemView);
 
-        linearLayout = (LinearLayout)itemView.findViewById(R.id.linear_layout);
         imageView = (ImageView) itemView.findViewById(R.id.image);
 
     }
