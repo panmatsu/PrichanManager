@@ -46,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
                 //クリック処理
                 listener.onClick(view, position);
                 //表示更新
-                notifyDataSetChanged();
+                notifyItemChanged(position);
 
             }
         });
