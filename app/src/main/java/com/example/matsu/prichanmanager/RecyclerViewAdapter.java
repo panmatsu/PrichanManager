@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+    private int position;
     //表示リストデータ
     private List<ListData> list;
     private onItemClickListener listener;
@@ -24,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     public void onBindViewHolder(RecyclerViewHolder holder, final int position){
 
+        this.position = position;
         //Viewにテキスト反映
         if(list.get(position).isHold() == true){
             holder.holdText.setText("所持");
@@ -32,11 +34,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         }
         //Viewに画像反映
         //Resource番号から画像の貼り付け
-        if(list.get(position).resNumber != 0) {
-            holder.imageView.setImageResource(list.get(position).getResNumber());
-        }else{
-            holder.imageView.setImageResource(R.drawable.pch1_01);
-        }
+        holder.imageView.setImageResource(list.get(position).getResNumber());
+
 
         //クリックイベント
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
