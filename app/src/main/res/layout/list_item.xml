@@ -6,28 +6,10 @@
     android:id="@+id/linear_layout"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:orientation="vertical">
-
-
-
-        <TextView
-            android:id="@+id/hold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:text="みしょじ" />
-
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         app:srcCompat="@drawable/pch1_01" />
 
 

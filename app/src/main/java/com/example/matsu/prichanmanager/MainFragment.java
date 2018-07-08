@@ -60,7 +60,7 @@ public class MainFragment extends Fragment {
 
 
         //CSVの読み込み
-        CsvReader parser = new CsvReader();
+        final CsvReader parser = new CsvReader();
         parser.reader(getContext(), "PCH"+String.valueOf(position)+".csv");
 
         //１番目のコーデの画像が読み込めない不具合のため個別代入
@@ -85,8 +85,9 @@ public class MainFragment extends Fragment {
         //クリック処理
         mAdapter.setOnItemClickListener(new RecyclerViewAdapter.onItemClickListener() {
             @Override
-            public void onClick(View view, String name) {
-                Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
+            public void onClick(View view, int position) {
+                //Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
+                parser.objects.get(position).setIsHold();
             }
         });
     }

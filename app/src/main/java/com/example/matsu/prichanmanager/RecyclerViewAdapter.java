@@ -23,27 +23,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return vh;
     }
 
-    public void onBindViewHolder(RecyclerViewHolder holder, final int position){
+    public void onBindViewHolder(final RecyclerViewHolder holder, final int position){
 
         this.position = position;
-        //Viewにテキスト反映
-        if(list.get(position).isHold() == true){
-            holder.holdText.setText("所持");
-        }else{
-            holder.holdText.setText("未所持");
-        }
+
         //Viewに画像反映
         //Resource番号から画像の貼り付け
         holder.imageView.setImageResource(list.get(position).getResNumber());
+
+        //所持状態なら画像を灰色にする
+        if (list.get(position).isHold() == true){
+            holder.imageView.setColorFilter(0xaa808080);
+        }else{
+            holder.imageView.setColorFilter(0xffffff);
+        }
 
 
         //クリックイベント
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                list.get(position).setIsHold();
+                //クリック処理
+                listener.onClick(view, position);
+                //表示更新
                 notifyDataSetChanged();
-                listener.onClick(view, list.get(position).getName());
 
             }
         });
@@ -58,6 +61,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     }
 
     public interface onItemClickListener{
-        void onClick(View view, String name);
+        void onClick(View view, int name);
     }
 }
